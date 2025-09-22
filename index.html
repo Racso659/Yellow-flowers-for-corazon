@@ -49,7 +49,30 @@
       <h2 id="Text">Para la niña más linda del mundo, mi corazón ❤️</h2>
     </div>
   </main>
+<!-- Audio oculto -->
+<audio id="musica" loop>
+  <source src="musica/floresamarillas.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
 
+<script>
+  const musica = document.getElementById("musica");
+
+  // Intentar reproducir al cargar
+  window.addEventListener("load", () => {
+    const playPromise = musica.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        console.log("El navegador bloqueó autoplay, se reproducirá al hacer click.");
+      });
+    }
+  });
+
+  // Asegurar que suene al primer click en el botón principal
+  document.getElementById("BVer").addEventListener("click", () => {
+    musica.play();
+  });
+</script>
   <!-- Scripts -->
   <script src="Js/app.js"></script>
   <script src="Js/Dis.js"></script>
